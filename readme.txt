@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: security, wp-admin, permissions
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 1.0
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,14 +32,20 @@ You must use a plugin similar to Frontend Edit Profile located [Frontend Edit Pr
 
 == Screenshots ==
 
-There are no screenshots, but you can test it [confusedthoughts](http://www.confusedthoughts.com) here
+There are no screenshots, but you can test it [confusedthoughts](http://www.confusedthoughts.com/wp-admin)
 
 == Changelog ==
 
 = 1.0 =
 * Initial Release
 
+= 2.0 =
+* This version allows for the use of ajax call from the front end. Also compatable with Buddypress
+
 == Upgrade Notice ==
 
 = 1.0 =
 * Initial Release
+
+= 2.0 =
+* This version allows for the use of ajax call from the front end. Also compatable with Buddypress

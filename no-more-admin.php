@@ -3,8 +3,8 @@
 Plugin Name: No mor admin
 Plugin URI: http://www.confusedthoughts.com
 Description: This disables access to wp-admin to all users who are not admins.
-Version: 1.0
-Author: Lee Thompson	
+Version: 2.0
+Author: Lee Thompson    
 Author URI: http://www.confusedthoughts.com
 License: GPL2
 */
@@ -25,11 +25,24 @@ License: GPL2
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+$wpba_required_capability = 'edit_others_posts';
+$wpba_redirect_to = '';
+
 add_action('admin_init', 'no_more_dashboard');
 function no_more_dashboard() {
-  if (!current_user_can('manage_options') && $_SERVER['DOING_AJAX'] != '/wp-admin/admin-ajax.php') {
-  wp_redirect(site_url()); exit;
-  }
+        global $wpba_required_capability, $wpba_redirect_to;
+                if (
+                        stripos($_SERVER['REQUEST_URI'],'/wp-admin/') !== false
+                        &&
+                        stripos($_SERVER['REQUEST_URI'],'async-upload.php') == false
+                        &&
+                        stripos($_SERVER['REQUEST_URI'],'admin-ajax.php') == false
+                ) {
+                        if (!current_user_can($wpba_required_capability)) {
+                                if ($wpba_redirect_to == '') { $wpba_redirect_to = get_option('siteurl'); }
+                                wp_redirect($wpba_redirect_to,302);
+                        }
+                }
 }
-
 ?>
+
